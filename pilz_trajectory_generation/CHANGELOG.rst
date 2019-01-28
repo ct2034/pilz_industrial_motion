@@ -2,6 +2,10 @@
 Changelog for package pilz_trajectory_generation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Enable gripper commands inside a sequence
+
 0.3.3 (2019-01-25)
 ------------------
 * add more details to blend algorithm description
