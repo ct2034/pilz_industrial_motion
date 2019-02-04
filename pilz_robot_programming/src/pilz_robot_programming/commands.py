@@ -54,6 +54,7 @@ _AXIS_SEQUENCE = "rzyz"
 _DEFAULT_PLANNING_GROUP = "manipulator"
 _DEFAULT_TARGET_LINK = "prbt_tcp"
 _DEFAULT_GRIPPER_PLANNING_GROUP = "gripper"
+_DEFAULT_BASE_LINK = "prbt_base"
 
 
 class _AbstractCmd(object):
@@ -226,7 +227,9 @@ class _BaseCmd(_AbstractCmd):
 
     def _get_goal_pose(self, robot):
         """Determines the goal pose for the given command."""
-        current_pose = robot.get_current_pose(base=self._reference_frame if self._reference_frame else "prbt_base")
+        current_pose = robot.get_current_pose(
+            target_link=self._target_link if self._target_link else _DEFAULT_TARGET_LINK,
+            base=self._reference_frame if self._reference_frame else _DEFAULT_BASE_LINK)
 
         if self._relative:
             self._goal = _pose_relative_to_absolute(current_pose, self._goal)
